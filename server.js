@@ -3,7 +3,6 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
-import cors from "cors";
 import express from "express";
 import userRoutes from "./routes/userRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
@@ -19,13 +18,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-let corsOptions = {
-  origin: "http://localhost:3000/",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
+// let corsOptions = {
+//   origin: "http://localhost:3000/",
+//   credentials: true,
+//   optionSuccessStatus: 200,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/users", userRoutes);
