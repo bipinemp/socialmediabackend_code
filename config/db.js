@@ -2,9 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(
-      "mongodb://127.0.0.1:27017/socialmedia"
-    );
+    const conn = await mongoose.connect(process.env.MONGO_URL);
     console.log(`Connected to ${conn.connection.host}`);
   } catch (error) {
     console.log(`Error: ${error.message}`);
@@ -13,3 +11,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+// "mongodb://127.0.0.1:27017/socialmedia"
