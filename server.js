@@ -8,6 +8,7 @@ import userRoutes from "./routes/userRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import { protect } from "./middlewares/authMiddleware.js";
+import cors from "cors";
 
 // Connection to Database
 connectDB();
@@ -18,13 +19,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-let corsOptions = {
-  origin: "https://socialmedia-frontendcode.vercel.app/",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://socialmedia-frontendcode.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 // Routes
 app.use("/api/users", userRoutes);
