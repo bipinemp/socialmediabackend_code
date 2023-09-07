@@ -24,6 +24,7 @@ app.use(
     origin: "https://socialmedia-frontendcode.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
+    credentials: true,
   })
 );
 
